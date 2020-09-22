@@ -28,8 +28,8 @@
                                                :preloads [devtools.preload]}}
 
                                :devtools {:http-root "resources/public"
-                                          :http-port 8280
-                                          }}}}
+                                          :http-port 8128}}}}
+
   
   :shell {:commands {"karma" {:windows         ["cmd" "/c" "karma"]
                               :default-command "karma"}
@@ -66,8 +66,6 @@
    {:dependencies [[binaryage/devtools "1.0.2"]]
     :source-paths ["dev"]}
 
-   :prod {}
-   
-}
+   :prod {}}
 
   :prep-tasks [])
