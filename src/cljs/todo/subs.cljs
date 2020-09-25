@@ -11,3 +11,7 @@
   ::todos
   (fn [db]
     (:todos db)))
+
+(re-frame/reg-sub
+  ::new-todo
+  (fn [db] (:new-todo db)))
