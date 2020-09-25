@@ -10,6 +10,7 @@
 
   :plugins [[lein-shadow "0.2.2"]
             
+            [cider/cider-nrepl "0.25.3"]
             [lein-shell "0.5.0"]]
 
   :min-lein-version "2.9.0"
@@ -21,6 +22,8 @@
 
   :shadow-cljs {:nrepl {:port 8777}
                 
+                :dependencies [[cider/cider-nrepl "0.25.3"]]
+
                 :builds {:app {:target :browser
                                :output-dir "resources/public/js/compiled"
                                :asset-path "/js/compiled"
@@ -38,7 +41,6 @@
                               :linux           "xdg-open"}}}
 
   :aliases {"dev"          ["do" 
-                            ["shell" "echo" "\"DEPRECATED: Please use lein watch instead.\""]
                             ["watch"]]
             "watch"        ["with-profile" "dev" "do"
                             ["shadow" "watch" "app" "browser-test" "karma-test"]]
