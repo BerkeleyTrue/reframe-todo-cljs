@@ -4,4 +4,5 @@
   {
    :title "Todo App"
    :todos []
+   :todos-by-id {}
    :new-todo ""})

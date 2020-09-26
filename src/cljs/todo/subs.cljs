@@ -10,7 +10,9 @@
 (re-frame/reg-sub
   ::todos
   (fn [db]
-    (:todos db)))
+    (let [todos (:todos db)
+          by-id (:todos-by-id db)]
+      (map (fn [id] (get by-id id)) todos))))
 
 (re-frame/reg-sub
   ::new-todo
