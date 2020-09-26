@@ -1,19 +1,22 @@
 (ns todo.subs
   (:require
-   [re-frame.core :as re-frame]))
+   [re-frame.core :as rf]))
 
-(re-frame/reg-sub
- ::name
+(rf/reg-sub
+ ::title
  (fn [db]
-   (:name db)))
+   (:title db)))
 
-(re-frame/reg-sub
+(rf/reg-sub
   ::todos
   (fn [db]
-    (let [todos (:todos db)
-          by-id (:todos-by-id db)]
-      (map (fn [id] (get by-id id)) todos))))
+    (:todos db)))
 
-(re-frame/reg-sub
+(rf/reg-sub
+  ::todo
+  (fn [{:keys [todos-by-id]} [_ id]]
+    (get todos-by-id id)))
+
+(rf/reg-sub
   ::new-todo
   (fn [db] (:new-todo db)))
