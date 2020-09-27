@@ -14,4 +14,4 @@
 # shadow-cljs cache, port files
 /shadow-cljs.edn
 /.shadow-cljs/
-.lsp
+.lsp/sqlite*
