@@ -4,5 +4,8 @@
                      "or" [[:inner 1]]
                      "are" [[:inner 0]]}}
  "use-metadata-for-privacy?" true
+ "clj-kondo" {:linters {:unused-namespace {:exclude [todo.core]}
+                        :unresolved-symbol {:exlude [goog defstyles]}}}
+
  "project-specs" [{:project-path "project.clj"
                    :classpath-cmd ["clj" "-Spath"]}]}
