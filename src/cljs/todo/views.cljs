@@ -1,13 +1,13 @@
 (ns todo.views
   (:require
    [re-frame.core :as rf]
-   [todo.subs :as subs]
+   [todo.db :as db]
    [todo.todos :refer [Todos]]
    [todo.input :refer [Input]]))
    
    
 (defn main-panel []
-  (let [title (rf/subscribe [::subs/title])]
+  (let [title (rf/subscribe [::db/title])]
 
     [:div
       [:header
