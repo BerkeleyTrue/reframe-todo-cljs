@@ -4,10 +4,10 @@
    [todo.db :as db]
    [todo.todos :refer [Todos]]
    [todo.input :refer [Input]]
-   [cljs-css-modules.macro :refer-macros [defstyle]]))
+   [cljs-css-modules.macro :as cx]))
    
    
-(defstyle styles
+(cx/defstyle styles
   [".root" {
             :display "flex"
             :flex-flow "column nowrap"
@@ -25,7 +25,6 @@
 
 (defn main-panel []
   (let [title (rf/subscribe [::db/title])]
-
     [:div {:className (:root styles)}
       [:header {:className (:header styles)}
         [:h1 @title]

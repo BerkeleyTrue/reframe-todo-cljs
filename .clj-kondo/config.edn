@@ -1,0 +1,2 @@
+;; using clojure-lsp to report unresolved-symbols
+{:linters {:unresolved-symbol {:level :off}}}

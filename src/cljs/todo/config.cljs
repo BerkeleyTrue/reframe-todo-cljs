@@ -1,4 +1,6 @@
-(ns todo.config)
+(ns todo.config
+  (:import goog.DEBUG))
+
 
 (def debug?
-  ^boolean goog.DEBUG)
+  ^boolean DEBUG)

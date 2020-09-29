@@ -2,11 +2,11 @@
   (:require
    [re-frame.core :as rf]
    [todo.db :as db]
-   [cljs-css-modules.macro :refer-macros [defstyle]]))
+   [cljs-css-modules.macro :as cx]))
    
    
     
-(defstyle styles
+(cx/defstyle styles
   [".input-wrap" {
                   :width "400px"
                   :height "44px"}])

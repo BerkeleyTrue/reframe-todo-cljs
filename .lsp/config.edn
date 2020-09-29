@@ -1,11 +1,7 @@
-{"cljfmt" {:indents {"#re \".*\"" [[:block 0]]
-                     "ns" [[:inner 0] [:inner 1]]
-                     "and "[[:inner 1]]
-                     "or" [[:inner 1]]
-                     "are" [[:inner 0]]}}
- "use-metadata-for-privacy?" true
- "clj-kondo" {:linters {:unused-namespace {:exclude [todo.core]}
-                        :unresolved-symbol {:exlude [goog defstyles]}}}
+{"clj-kondo" {:linters {:unresolved-symbol {:level :off}}}
 
- "project-specs" [{:project-path "project.clj"
-                   :classpath-cmd ["clj" "-Spath"]}]}
+ "project-specs" [{
+                   :project-path "project.clj"
+                   :classpath-cmd ["lein" "classpath"]}]
+
+ "macro-defs" {cljs-css-modules.macro/defstyle [{:element :declaration } :elements]}}

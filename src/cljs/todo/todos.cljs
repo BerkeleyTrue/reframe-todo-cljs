@@ -3,9 +3,9 @@
     [re-frame.core :as rf]
     [todo.db :as db]
     [todo.todo :refer [Todo]]
-    [cljs-css-modules.macro :refer-macros [defstyle]]))
+    [cljs-css-modules.macro :as cx]))
     
-(defstyle styles
+(cx/defstyle styles
   [".todos-wrap" {
                   :max-width "400px"}]
   [".todos" {
