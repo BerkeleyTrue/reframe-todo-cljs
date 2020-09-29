@@ -1,5 +1,5 @@
 (ns todo.config
-  (:import goog.DEBUG))
+  (:require [goog :refer [DEBUG]]))
 
 
 (def debug?
