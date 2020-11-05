@@ -2,19 +2,11 @@
   (:require
     [re-frame.core :as rf]
     [todo.db :as db]
-    [todo.todo :refer [Todo]]
-    [cljs-css-modules.macro :as cx]))
+    [todo.todo :refer [Todo]]))
     
-(cx/defstyle styles
-  [".todos-wrap" {
-                  :max-width "400px"}]
-  [".todos" {
-             :width "100%"}])
-  
-
 (defn Todos []
   (let [todos (rf/subscribe [::db/todos])]
 
-    [:div {:className (:todos-wrap styles)}
-        [:ul {:className (:todos styles)}
+    [:div.container.flex.flex-col.items-center
+        [:ul.ul
           (doall (map Todo @todos))]]))
