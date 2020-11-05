@@ -9,10 +9,9 @@
                  [re-frame "1.1.1"]
                  [cljs-css-modules "0.2.1"]
                  [garden "1.3.10"]]
-                 
 
   :plugins [[lein-shadow "0.2.2"]
-            
+            [lein-tailwind "0.1.2"]
             [cider/cider-nrepl "0.25.3"]
             [lein-shell "0.5.0"]]
 
@@ -73,4 +72,10 @@
 
    :prod {}}
 
-  :prep-tasks [])
+  :prep-tasks []
+  :tailwind {:tailwind-dir "src/css/tailwind"
+             :output-dir   "resources/public/css"
+             :styles [{:src "main.css"
+                       :dst "main.css"}]}
+
+  :hooks [leiningen.tailwind])
