@@ -7,6 +7,6 @@
 (defn Todos []
   (let [todos (rf/subscribe [::db/todos])]
 
-    [:div.container.flex.flex-col.items-center
-        [:ul.ul
+    [:div.container.flex.flex-col.items-center.mb-10
+        [:ul.w-full.flex.flex-col.items-center
           (doall (map Todo @todos))]]))
