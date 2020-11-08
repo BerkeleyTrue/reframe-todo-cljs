@@ -9,12 +9,10 @@
         onComplete (fn [] (rf/dispatch [:todo/on-complete id]))
         className (str "todo" (if (:completed? todo) " line-through" ""))]
 
-    [:li.flex.flex-row.justify-between.items-center.text-lg.max-w-md.w-full.mb-2
-      {:class className
-        :key id}
-      [:div
-        (:title todo)]
+    [:button.items-center.px-4.text-lg.tracker-wide.text-secondary.min-w-40.h-10.max-w-md.w-full.mb-2
+      {:onClick onComplete
+       :key id
+       :class className}
 
-      [:button.flex.flex-row.justify-center.items-center.rounded-md.px-4.uppercase.text-md.font-bold.tracker-wide.text-primary.border-primary.border-2.min-w-40.h-10.shadow-sm
-        {:onClick onComplete}
-        "Completed"]]))
+      [:li.w-full.text-left
+        (:title todo)]]))

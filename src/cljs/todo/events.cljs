@@ -31,3 +31,10 @@
   (fn [db [_ id]]
     (-> db 
         (update-in [:todos-by-id id :completed?] not))))
+
+(rf/reg-event-db
+  :todo/on-delete
+  (fn [db [_ id]]
+    (-> db
+        (dissoc id)
+        (assoc :todos (filter (:todos db) id)))))
