@@ -30,4 +30,4 @@
   :todo/on-complete
   (fn [db [_ id]]
     (-> db 
-        (assoc-in [:todos-by-id id :completed?] true))))
+        (update-in [:todos-by-id id :completed?] not))))
