@@ -8,19 +8,26 @@
                  [reagent "0.10.0"]
                  [re-frame "1.1.1"]
                  [cljs-css-modules "0.2.1"]
-                 [garden "1.3.10"]]
+                 [metosin/reitit "0.5.10"]
+                 [metosin/reitit-ring "0.5.10"]]
 
   :plugins [[lein-shadow "0.2.2"]
             [lein-tailwind "0.1.2"]
             [cider/cider-nrepl "0.25.3"]
-            [lein-shell "0.5.0"]]
+            [lein-shell "0.5.0"]
+            [lein-ring "0.12.5"]
+            [lein-pdo "0.1.1"]]
+
+
 
   :min-lein-version "2.9.0"
 
-  :source-paths ["src/clj" "src/cljs"]
+  :source-paths ["src/server" "src/client"]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
 
+  :ring {:handler todo.core/app
+         :port 8129}
 
   :shadow-cljs {:nrepl {:port 8777}
                 
@@ -42,10 +49,15 @@
                               :macosx          "open"
                               :linux           "xdg-open"}}}
 
-  :aliases {"dev"          ["do" 
-                            ["watch"]]
-            "watch"        ["with-profile" "dev" "do"
-                            ["shadow" "watch" "app" "browser-test" "karma-test"]]
+  :aliases {
+            "client"       ["shadow" "watch" "app"]
+
+            "server"       ["ring" "server-headless"]
+
+            "dev"        ["with-profile" "dev" "pdo"
+                          ["server"]
+                          ["client"]]
+
 
             "prod"         ["do"
                             ["shell" "echo" "\"DEPRECATED: Please use lein release instead.\""]
@@ -66,13 +78,14 @@
                             ["shell" "karma" "start" "--single-run" "--reporters" "junit,dots"]]}
 
   :profiles
-  {:dev
-   {:dependencies [[binaryage/devtools "1.0.2"]]
-    :source-paths ["dev"]}
+    {:dev
+      {:dependencies [[binaryage/devtools "1.0.2"]]
+       :source-paths ["dev"]}
 
-   :prod {}}
+     :prod {}}
 
   :prep-tasks []
+
   :tailwind {:tailwind-dir "src/css/tailwind"
              :output-dir   "resources/public/css"
              :styles [{:src "main.css"
