@@ -4,10 +4,12 @@
                   :exclusions [com.google.javascript/closure-compiler-unshaded
                                org.clojure/google-closure-library
                                org.clojure/google-closure-library-third-party]]
+                 ;; client
                  [thheller/shadow-cljs "2.11.0"]
                  [reagent "0.10.0"]
                  [re-frame "1.1.1"]
-                 [cljs-css-modules "0.2.1"]
+
+                 ;; server
                  [metosin/reitit "0.5.10"]
                  [metosin/reitit-ring "0.5.10"]]
 
@@ -17,8 +19,6 @@
             [lein-shell "0.5.0"]
             [lein-ring "0.12.5"]
             [lein-pdo "0.1.1"]]
-
-
 
   :min-lein-version "2.9.0"
 
@@ -58,17 +58,16 @@
                               :linux           "xdg-open"}}}
 
   :aliases {
-            "css" ["tailwind" "build"]
+            "css"          ["tailwind" "build"]
 
             "client"       ["shadow" "watch" "app"]
 
             "server"       ["ring" "server-headless"]
 
-            "dev"        ["with-profile" "dev" "pdo"
-                          ["css"]
-                          ["server"]
-                          ["client"]]
-
+            "dev"          ["with-profile" "dev" "pdo"
+                            ["css"]
+                            ["server"]
+                            ["client"]]
 
             "prod"         ["do"
                             ["shell" "echo" "\"DEPRECATED: Please use lein release instead.\""]
