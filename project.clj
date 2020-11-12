@@ -24,7 +24,13 @@
 
   :source-paths ["src/server" "src/client"]
 
-  :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
+  ; what to clean up on lein clean
+  :clean-targets ^{:protect false} ["resources/public/js/compiled" "resources/public/css" "target"]
+
+  :tailwind {:tailwind-dir "src/css/tailwind"
+             :output-dir   "resources/public/css"
+             :styles [{:src "main.css"
+                       :dst "main.css"}]}
 
   :ring {:handler todo.core/app
          :port 8129}
@@ -50,11 +56,14 @@
                               :linux           "xdg-open"}}}
 
   :aliases {
+            "css" ["tailwind" "build"]
+
             "client"       ["shadow" "watch" "app"]
 
             "server"       ["ring" "server-headless"]
 
             "dev"        ["with-profile" "dev" "pdo"
+                          ["css"]
                           ["server"]
                           ["client"]]
 
@@ -84,11 +93,4 @@
 
      :prod {}}
 
-  :prep-tasks []
-
-  :tailwind {:tailwind-dir "src/css/tailwind"
-             :output-dir   "resources/public/css"
-             :styles [{:src "main.css"
-                       :dst "main.css"}]}
-
-  :hooks [leiningen.tailwind])
+  :prep-tasks [])
