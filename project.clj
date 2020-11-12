@@ -35,8 +35,10 @@
   :ring {:handler todo.core/app
          :port 8129}
 
+  :npm-dev-deps {"shadow-cljs" "2.11.0"}
+
   :shadow-cljs {:nrepl {:port 8777}
-                
+
                 :dependencies [[cider/cider-nrepl "0.25.3"]]
 
                 :builds {:app {:target :browser
