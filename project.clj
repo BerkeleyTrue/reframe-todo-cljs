@@ -33,7 +33,8 @@
                        :dst "main.css"}]}
 
   :ring {:handler todo.core/app
-         :port 8129}
+         :port 8129
+         :auto-reload? true}
 
   :npm-dev-deps {"shadow-cljs" "2.11.0"}
 
