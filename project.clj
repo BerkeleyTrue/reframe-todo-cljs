@@ -11,7 +11,10 @@
 
                  ;; server
                  [metosin/reitit "0.5.10"]
-                 [metosin/reitit-ring "0.5.10"]]
+                 [metosin/reitit-ring "0.5.10"]
+                 [metosin/reitit-swagger "0.5.12"]
+                 [metosin/muuntaja "0.6.8"]]
+
 
   :plugins [[lein-shadow "0.2.2"]
             [lein-tailwind "0.1.2"]
