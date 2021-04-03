@@ -37,8 +37,11 @@
 (def app
   (ring/ring-handler
     router
-    (ring/create-default-handler)))
+    (ring/routes
+      (ring/redirect-trailing-slash-handler)
+      (ring/create-default-handler))))
+
 
 (comment
   (app {:request-method :get :uri "/api/commands"})
-  (app {:request-method :get :uri "/swagger.json"}))
+  (app {:request-method :get :uri "/api-docs/"}))
