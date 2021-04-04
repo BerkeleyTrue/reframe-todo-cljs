@@ -13,8 +13,10 @@
                  [metosin/reitit "0.5.10"]
                  [metosin/reitit-ring "0.5.10"]
                  [metosin/reitit-swagger "0.5.12"]
-                 [metosin/muuntaja "0.6.8"]]
-
+                 [metosin/muuntaja "0.6.8"]
+                 [integrant "0.8.0"]
+                 [integrant/repl "0.3.2"]
+                 [http-kit "2.5.3"]]
 
   :plugins [[lein-shadow "0.2.2"]
             [lein-tailwind "0.1.2"]
@@ -70,7 +72,6 @@
 
             "dev"          ["with-profile" "dev" "pdo"
                             ["css"]
-                            ["server"]
                             ["client"]]
 
             "prod"         ["do"
