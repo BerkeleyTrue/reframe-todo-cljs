@@ -1,4 +1,4 @@
-(ns cljs.user
+(ns clj.user
   "Commonly used symbols for easy access in the Clojure REPL during
   development."
   (:require
@@ -12,7 +12,7 @@
 (ig-repl/set-prep! (constantly config))
 
 (comment
-  (app {:request-method :get :uri "/api-docs"})
+  (app {:request-method :get :uri "/create-todo"})
   (go)
   (halt)
   (reset)
