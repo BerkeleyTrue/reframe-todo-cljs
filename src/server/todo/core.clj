@@ -6,7 +6,8 @@
 
 (def router
   (ring/router
-    [infra/swagger-routes]
+    [infra/swagger-routes
+     infra/api-routes]
     {:data {:muuntaja m/instance
             :middleware infra/middlewares}}))
 
@@ -14,5 +15,3 @@
   (ring/ring-handler
     router
     infra/default-handler))
-
-(comment (app {:request-method :get :uri "/api-docs"}))
