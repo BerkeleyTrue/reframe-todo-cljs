@@ -12,7 +12,7 @@
 (ig-repl/set-prep! (constantly config))
 
 (comment
-  (app {:request-method :get :uri "/create-todo"})
+  (app {:request-method :post :uri "/commands/create-todo"})
   (go)
   (halt)
   (reset)

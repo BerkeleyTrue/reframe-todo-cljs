@@ -5,6 +5,7 @@
    [reitit.ring.middleware.parameters :as parameters]
    [reitit.ring.middleware.exception :as exception]
    [reitit.ring.coercion :as coercion]
+   [reitit.coercion.malli :as rmalli]
    [reitit.swagger :as swagger]
    [reitit.swagger-ui :as swagger-ui]
    [todo.application.core :as app]))
@@ -28,16 +29,25 @@
    ["/swagger.json" {:get (swagger/create-swagger-handler)}]
    ["/swagger/*" {:get (swagger-ui/create-swagger-ui-handler)}]])
 
-(defn name->command-uri [name]
+(defn- name->command-uri [name]
   (str "/commands/" name))
+
+(defn- wrap-command [handler]
+  (fn [request]
+    (let [res (handler request)]
+      (println res)
+      {:status 200
+       :body res})))
 
 (def api-routes
   (->>
     app/commands
-    (map
-      (fn [{:keys [name handler]}]
-        [name {:post handler
-               :name name}]))
-    (map
-      (fn [[name data]]
-        [(name->command-uri name) data]))))
+    (mapv
+      (fn [{:keys [name handler summary parameters]}]
+        [(name->command-uri name)
+         {:name (keyword name)
+          :coercion rmalli/coercion
+          :post
+          {:handler (wrap-command handler)
+           :summary summary
+           :parameters parameters}}]))))

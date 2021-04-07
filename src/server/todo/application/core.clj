@@ -1,18 +1,16 @@
 (ns todo.application.core)
 
+(def create-todo
+  {:handler (fn [_] "done")
+   :name "create-todo"
+   :summary "create a new todo"
+   :parameters
+   {:body
+    [:map
+      [:title string?]]}})
 
-(defn createTodo []
-  (println "Create Todo")
-  "done")
-
-
-(defn updateTodo []
-  (println "todo updated")
+(defn change-title [_]
   "done")
 
 (def commands
-  [{:handler createTodo
-    :name "create-todo"
-    :parameters
-    {:body
-     {:title string?}}}])
+  [create-todo])
