@@ -1,7 +1,9 @@
 (ns todo.system
   (:require
     [integrant.core :as ig]
-    [org.httpkit.server :as http]))
+    [org.httpkit.server :as http]
+    [taoensso.timbre :refer [info]]))
+
 
 
 (def config
@@ -12,8 +14,10 @@
 
 (defmethod ig/init-key :system/http
   [_ {:keys [port handler]}]
+  (info "starting server")
   (http/run-server handler {:port port}))
 
 (defmethod ig/halt-key! :system/http
   [_ stop-server]
+  (info "stopping server")
   (stop-server :timeout 100))

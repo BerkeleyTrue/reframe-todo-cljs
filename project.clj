@@ -4,6 +4,9 @@
                   :exclusions [com.google.javascript/closure-compiler-unshaded
                                org.clojure/google-closure-library
                                org.clojure/google-closure-library-third-party]]
+
+                 [com.taoensso/timbre "5.1.2"]
+
                  ;; client
                  [thheller/shadow-cljs "2.11.0"]
                  [reagent "0.10.0"]
