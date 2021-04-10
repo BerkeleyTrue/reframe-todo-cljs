@@ -30,7 +30,7 @@
 
   :min-lein-version "2.9.0"
 
-  :source-paths ["src/server" "src/client"]
+  :source-paths ["src/clj" "src/cljs"]
 
   ; what to clean up on lein clean
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "resources/public/css" "target"]
