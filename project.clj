@@ -19,7 +19,10 @@
                  [metosin/muuntaja "0.6.8"]
                  [integrant "0.8.0"]
                  [integrant/repl "0.3.2"]
-                 [http-kit "2.5.3"]]
+                 [http-kit "2.5.3"]
+                 [juxt/crux-core "21.04-1.16.0-beta"]]
+
+
 
   :plugins [[lein-shadow "0.2.2"]
             [lein-tailwind "0.1.2"]

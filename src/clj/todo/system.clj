@@ -4,13 +4,12 @@
     [org.httpkit.server :as http]
     [taoensso.timbre :refer [info]]))
 
-
-
 (def config
   {:system/http
    {:port 8129
     :handler (ig/ref :core/app)}
-   :core/app nil})
+   :core/app nil
+   :infra/crux nil})
 
 (defmethod ig/init-key :system/http
   [_ {:keys [port handler]}]
